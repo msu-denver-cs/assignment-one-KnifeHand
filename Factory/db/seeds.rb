@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+Part.delete_all
+# . . . Populate Parts table to load the data in a more controlled way with the test data.
+Part.create(title: 'Radiator',
+             description: 'Is this the right part for you?',
+             image_url: 'Radiator.jpg',
+             price: 20.00
+)
+# . . .

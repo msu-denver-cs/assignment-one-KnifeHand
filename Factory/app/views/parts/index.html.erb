@@ -1,25 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Parts</h1>
+<h1>Car Parts for Cars</h1>
 
 <table>
   <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Image url</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
+  <%=
+    #<tr>
+      #<th>Title</th>
+      #<th>Description</th>
+      #<th>Image url</th>
+      #<th>Price</th>
+      #<th colspan="3"></th>
+    #</tr>
+  %>
   </thead>
 
   <tbody>
     <% @parts.each do |part| %>
-      <tr>
-        <td><%= part.title %></td>
-        <td><%= part.description %></td>
-        <td><%= part.image_url %></td>
-        <td><%= part.price %></td>
+      <tr class=" <%= cycle('list_line_odd', 'list_line_even')%>">
+        <td>
+          <%= image_tag(part.image_url, class: 'list_image') %>
+        </td>
+        <td class="list_description">
+          <%= part.description %>
+          <dl>
+            <dt><%= part.title %></dt>
+            <dd><% truncate(strip_tags(part.description), length: 80) %></dd>
+          </dl>
+        </td>
+        <td class="list_actions">
         <td><%= link_to 'Show', part %></td>
         <td><%= link_to 'Edit', edit_part_path(part) %></td>
         <td><%= link_to 'Destroy', part, method: :delete, data: { confirm: 'Are you sure?' } %></td>
